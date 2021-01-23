@@ -1,0 +1,26 @@
+Farah Qotrunnada
+farah.nada14@gmail.com
+
+Dari Database Chinook, Saya ingin mendapatkan/menampilkan 3 kolom
+Yaitu Nama Album, Nama Artis, dan Judul Lagu/Track
+Dengan Syarat
+• BAND Aerosmith
+• BAND AC/DC
+• Dimana untuk BAND AC/DC Nama Album yang ditampilkan adalah Let There Be Rock
+
+Jawaban Query:
+select albums.Title, artists.Name,tracks.Name as track
+from albums
+inner join artists on albums.ArtistId=artists.ArtistId
+inner join tracks on albums.AlbumId=tracks.AlbumId
+where artists.Name="Aerosmith" or (artists.Name="AC/DC" and albums.Title="Let There Be Rock");
+
+SELECT a.InvoiceDate as 'Invoice Date',b.FirstName||' '||b.LastName as name,a.BillingAddress as Address,a.BillingCity as City,c.Name as 'Song Title',d.Title as Album
+,e.Name as Artis
+FROM invoices a
+INNER JOIN customers b on a.CustomerId=b.CustomerId
+INNER JOIN invoice_items f on a.InvoiceId=f.InvoiceId
+INNER JOIN tracks c on f.TrackId=c.TrackId
+INNER JOIN albums d on c.AlbumId=d.AlbumId
+INNER JOIN artists e on d.ArtistId=e.ArtistId
+WHERE FirstName='Mark' AND InvoiceDate="2009-01-06 00:00:00";
